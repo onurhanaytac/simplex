@@ -1,0 +1,14 @@
+{
+  "name": "simplex",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "concurrently \"cd simplex-server && npm start\" \"cd simplex-client && npm start\"",
+    "install": "concurrently \"cd simplex-server && npm install\" \"cd simplex-client && npm install\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^6.2.1"
+  }
+}
