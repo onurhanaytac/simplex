@@ -4,6 +4,7 @@ import { Select, MenuItem, InputLabel, OutlinedInput } from "@mui/material";
 import { DropdownProps } from "./Dropdown.type";
 
 const Dropdown = ({
+  testId,
   style,
   className,
   label,
@@ -31,6 +32,7 @@ const Dropdown = ({
         value={value}
         onChange={onChange}
         MenuProps={MenuProps}
+        inputProps={{ "data-testid": testId }}
       >
         {data.map((item: string) => (
           <MenuItem key={item} value={item}>

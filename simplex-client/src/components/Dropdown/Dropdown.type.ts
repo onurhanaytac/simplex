@@ -3,6 +3,7 @@ import { SelectChangeEvent } from "@mui/material";
 export interface DropdownProps {
   style?: object;
   className?: string;
+  testId?: string;
   label?: string;
   data: string[];
   value: string;
