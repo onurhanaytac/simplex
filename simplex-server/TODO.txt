@@ -1,3 +1,0 @@
-airbnb lint
-@typescript-eslint/no-throw-literal
-throw err wirh new Error
