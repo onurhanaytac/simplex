@@ -2,7 +2,6 @@ import { Express } from "express";
 import { QuotesController } from "./quotes";
 
 const routes = (app: Express): void => {
-  app.use("/quotes", QuotesController);
   app.use("/", QuotesController);
 };
 

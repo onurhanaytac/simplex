@@ -12,20 +12,14 @@ export default class QuotesDAL {
           data: res.data
         })
       )
-      .catch((error): Response => ({ error }));
-  }
-
-  async getPair(payload: PairPayload): Promise<Response> {
-    return await axios
-      .get(
-        `${config.url}/pair/${payload.baseCurrency}/${payload.quoteCurrency}/${payload.baseAmount}`
-      )
-      .then((res): Response => {
-        return {
-          data: res.data
-        };
-      })
-      .catch((error): Response => ({ error }));
+      .catch(
+        (error): Response => ({
+          error: {
+            status: error.response?.status || 400,
+            statusText: error.response?.statusText || "Bad Request"
+          }
+        })
+      );
   }
 
   async getQuote(payload: PairPayload): Promise<Response> {
@@ -38,6 +32,13 @@ export default class QuotesDAL {
           data: res.data
         };
       })
-      .catch((error): Response => ({ error }));
+      .catch(
+        (error): Response => ({
+          error: {
+            status: error.response?.status || 400,
+            statusText: error.response?.statusText || "Bad Request"
+          }
+        })
+      );
   }
 }
