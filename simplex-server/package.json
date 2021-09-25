@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./bin/server.ts",
-    "test": "jest"
+    "test": "jest --watch"
   },
   "dependencies": {
     "axios": "^0.21.4",

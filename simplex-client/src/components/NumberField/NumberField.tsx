@@ -3,6 +3,7 @@ import { InputLabel, TextField } from "@mui/material";
 import { NumberFieldProps } from "./NumberField.type";
 
 const NumberField = ({
+  testId,
   style,
   className,
   label,
@@ -29,6 +30,7 @@ const NumberField = ({
         style={style}
         className={className}
         onChange={onChangeBefore}
+        inputProps={{ "data-testid": testId }}
       />
     </>
   );

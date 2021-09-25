@@ -22,6 +22,18 @@ const mockPairError = {
   status: 404,
   statusText: "Not Found"
 };
+const mockPairBroken = {
+  result: "success",
+  documentation: "https://www.exchangerate-api.com/docs",
+  terms_of_use: "https://www.exchangerate-api.com/terms",
+  time_last_update_unix: 1632268802,
+  time_last_update_utc: "Wed, 22 Sep 2021 00:00:02 +0000",
+  time_next_update_unix: 1632355202,
+  time_next_update_utc: "Thu, 23 Sep 2021 00:00:02 +0000",
+  base_code: "EUR",
+  target_code: "USD",
+  conversion_rate: -100
+};
 
 test("should calculate the correct quote amount", async () => {
   (axios.get as any).mockResolvedValue(
@@ -55,4 +67,19 @@ test("exchange api not found should be handled", async () => {
 
   expect(result?.error?.status).toBe(404);
   expect(result?.error?.statusText).toBe("Not Found");
+});
+
+test("calculating result with invalid conversion rates", async () => {
+  (axios.get as any).mockResolvedValue(
+    Promise.resolve({ data: mockPairBroken })
+  );
+
+  const result = await quotesService.getQuote({
+    baseAmount: -0,
+    baseCurrency: "EUR",
+    quoteCurrency: "TRY"
+  });
+
+  expect(result.data.exchangeRate).toBe(-100);
+  expect(result.data.quoteAmount).toBe(0);
 });
