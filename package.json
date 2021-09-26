@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "concurrently \"cd simplex-server && npm start\" \"cd simplex-client && npm start\"",
-    "install": "concurrently \"cd simplex-server && npm install\" \"cd simplex-client && npm install\""
+    "install": "concurrently \"cd simplex-server && npm install\" \"cd simplex-client && npm install\"",
+    "test": "concurrently \"cd simplex-server && npm test\" \"cd simplex-client && npm test\""
   },
   "keywords": [],
   "author": "",
